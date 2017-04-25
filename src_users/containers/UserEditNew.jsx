@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect, bindActionCreators } from 'react-redux';
-import { createUser } from '../actions/user';
+import { createUpdateUser } from '../actions/user';
 import FormUser from '../components/FormUser.jsx';
 import { push } from 'react-router-redux';
 
 
-class UserNew extends React.Component {
+class UserEditNew extends React.Component {
   constructor(props){
     super(props)
 
@@ -13,6 +13,11 @@ class UserNew extends React.Component {
     this.handleCreateUser = this.handleCreateUser.bind(this);
   }
   componentDidMount(){
+    const { routeParams, data } = this.props;
+    if(routeParams._id){
+      if(!data){ //fech user data
+      }
+    }
   }
 
   handleCancelForm(){
@@ -21,7 +26,7 @@ class UserNew extends React.Component {
 
   handleCreateUser(user){
     console.log(user)
-    this.props.dispatch( createUser(user) )
+    this.props.dispatch( createUpdateUser(user) )
   }
 
   componentWillReceiveProps(nextProps){
@@ -31,9 +36,11 @@ class UserNew extends React.Component {
   }
 
   render(){
+    const userId = this.props.routeParams._id;
     return <div>
-      <h3>New User</h3>
+      <h3>{userId? 'Edit User': 'New User'}</h3>
       <FormUser  
+        data={this.props.data}
         isWorking={this.props.isWorking}
         handleCreateUser={this.handleCreateUser}
         handleCancelForm={this.handleCancelForm}/>
@@ -50,6 +57,6 @@ const mapStateToProps = state =>  {
   }
 };
 
-UserNew = connect(mapStateToProps)(UserNew)
+UserEditNew = connect(mapStateToProps)(UserEditNew)
 
-export default UserNew
+export default UserEditNew

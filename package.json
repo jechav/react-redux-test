@@ -31,7 +31,9 @@
   "author": "Catalin Luntraru",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.14.0",
+    "mongodb": "^2.2.26",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",

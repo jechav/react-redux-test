@@ -4,13 +4,17 @@ import React, { PropTypes } from 'react';
 class FormUser extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: 'raquel',
-      lastName: 'martinez',
-      phone: '32424',
-      state: 'active',
-      msgs: ''
-    };
+    if(props.data){
+      this.state = props.data;
+    }else{
+      this.state = {
+        name: '',
+        lastName: '',
+        phone: '',
+        state: '',
+        msgs: ''
+      };
+    }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleActiveChange = this.handleActiveChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -35,6 +39,9 @@ class FormUser extends React.Component {
     //validate
     const fields = ['name', 'lastName', 'phone', 'state']
     var payLoad = {};
+    if(this.props.data) {
+      payLoad._id = this.props.data._id
+    }
     for(let i=0; i<fields.length; i++){
       let f = fields[i]
       payLoad[f] = this.state[f]; //fill payload
@@ -104,13 +111,12 @@ class FormUser extends React.Component {
             type="submit"
             className="btn btn-primary float-right"
             disabled={this.props.isWorking}
-            value="Submit"/>
+            value="Save"/>
 
           <button
             className="btn btn-link float-left"
             type="button"
             disabled={this.props.isWorking}
-            value="cancel"
             onClick={this.handleCancelForm}>Cancel «</button>
         </div>
       </form>

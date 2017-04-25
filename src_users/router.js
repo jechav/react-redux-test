@@ -5,7 +5,7 @@ import App from "./components/App";
 import Welcome from "./components/Welcome";
 
 import UserList from "./containers/UserList.jsx";
-import UserNew from "./containers/UserNew.jsx";
+import UserEditNew from "./containers/UserEditNew.jsx";
 
 
 // build the router
@@ -14,8 +14,8 @@ const router = (
     <Route path="/" component={App}>
       <IndexRoute component={Welcome}/>
       <Route path="users" component={UserList} />
-      <Route path="users-new" component={UserNew} />
-      <Route path="users-edit" component={UserNew} />
+      <Route path="users-new" component={UserEditNew} />
+      <Route path="users-edit/:_id" component={UserEditNew} />
     </Route>
   </Router>
 );
