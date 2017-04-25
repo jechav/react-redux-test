@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchUsers } from '../actions/users.js';
+import { fetchUsers } from '../actions/users';
+import { updateUser } from '../actions/user';
 import TableList from '../components/TableList.jsx'
 
 
@@ -17,6 +18,8 @@ class UsersList extends React.Component {
   handleRemove(v){
     console.log(v)
     if(confirm('Are you sure?')){
+      let data = {active: false};
+      this.props.dispatch( updateUser(v.id, data) )
     }
   }
 

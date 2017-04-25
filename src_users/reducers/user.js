@@ -26,6 +26,23 @@ export default function user(state = [], action) {
         isWorking: false,
         message: action.message
       }
+
+    case USERS_UPDATE_REQUESTED:
+      return {
+        isWorking: true,
+        data: action.data,
+        id: action.id
+      }
+    case USERS_UPDATE_SUCCEEDED:
+      return {
+        isWorking: false,
+      }
+    case USERS_UPDATE_FAILED:
+      return {
+        isWorking: false,
+        message: action.message
+      }
+
     // initial state
     default:
       return state;

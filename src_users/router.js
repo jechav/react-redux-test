@@ -15,6 +15,7 @@ const router = (
       <IndexRoute component={Welcome}/>
       <Route path="users" component={UserList} />
       <Route path="users-new" component={UserNew} />
+      <Route path="users-edit" component={UserNew} />
     </Route>
   </Router>
 );

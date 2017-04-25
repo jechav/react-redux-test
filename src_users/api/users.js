@@ -40,10 +40,16 @@ export default class ApiUsers {
     });
   }
 
-  static edit({id, data}) {
-    console.log(id, dta)
+  static update(payload) {
+    console.log(payload)
     return new Promise(resolve => {
       setTimeout(() => {
+        //users = users.map(v => {
+          //if(v.id == payload.id){
+            //v.data = {...v.data, ...payload.data}
+          //}
+        //})
+        //console.log(users)
         // do something here
         resolve(users);
       }, 1000);
