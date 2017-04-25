@@ -1,40 +1,52 @@
+var users = [{
+  id: 1,
+  name: 'Johny',
+  lastName: 'Garzon ',
+  phone: '2343423',
+  state: 'active '
+}, 
+{
+  id: 2,
+  name: 'Andres',
+  lastName: 'Perez ',
+  phone: '5465453',
+  state: 'active '
+},{
+  id: 3,
+  name: 'Produsprudulo',
+  lastName: 'Angarita',
+  phone: '3453452',
+  state: 'inactive'
+}
+]
 // API Users static class
 export default class ApiUsers {
   // get a list of users
   static getList() {
     return new Promise(resolve => {
       setTimeout(() => {
-        // build some dummy users list
-        let users = [];
-        for (let x = 1; x <= 28; x++) {
-          users.push({
-            id: x,
-            username: 'Johny ' + x,
-            job: 'Employee ' + x,
-          });
-        }
         resolve(users);
       }, 1000);
     });
   }
 
   // add/edit a user
-  static addEdit() {
+  static add(data) {
     return new Promise(resolve => {
       setTimeout(() => {
-        // do something here
-        resolve();
+        users.push(data)
+        resolve(users);
       }, 1000);
     });
   }
 
-  // delete a user
-  static delete() {
+  static edit({id, data}) {
+    console.log(id, dta)
     return new Promise(resolve => {
       setTimeout(() => {
         // do something here
-        resolve();
-      }, 500);
+        resolve(users);
+      }, 1000);
     });
   }
 }
