@@ -13,7 +13,7 @@ import UserRemove from "./containers/UserRemove.jsx";
 const router = (
   <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
     <Route path="/" component={App}>
-      <IndexRoute component={Welcome}/>
+      <IndexRoute component={UserList}/>
       <Route path="users" component={UserList} />
       <Route path="users-new" component={UserEditNew} />
       <Route path="users-edit/:_id" component={UserEditNew} />

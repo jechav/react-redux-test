@@ -37,7 +37,7 @@ class UserEditNew extends React.Component {
 
   render(){
     return <div>
-      <h3>Do you want to remove this user</h3>
+      <h3>Do you want to remove this user: {this.props.data.name}</h3>
 
       <butto className="btn btn-default" onClick={this.handleCancel} style={{marginRight: '10px'}}>Cancelar </butto>
       <butto className="btn btn-danger" onClick={this.handleRemove}>Borar</butto>
