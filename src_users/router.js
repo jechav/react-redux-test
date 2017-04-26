@@ -6,6 +6,7 @@ import Welcome from "./components/Welcome";
 
 import UserList from "./containers/UserList.jsx";
 import UserEditNew from "./containers/UserEditNew.jsx";
+import UserRemove from "./containers/UserRemove.jsx";
 
 
 // build the router
@@ -16,6 +17,7 @@ const router = (
       <Route path="users" component={UserList} />
       <Route path="users-new" component={UserEditNew} />
       <Route path="users-edit/:_id" component={UserEditNew} />
+      <Route path="users-remove/:_id" component={UserRemove} />
     </Route>
   </Router>
 );

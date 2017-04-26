@@ -35,11 +35,9 @@ class UsersList extends React.Component {
   }
 
   handleRemove(v){
-    console.log(v)
-    if(confirm('Are you sure to remove this item?')){
-      let data = {...v, state: 'inactive'};
-      this.props.dispatch( createUpdateUser(data) )
-    }
+    const { dispatch } = this.props
+    dispatch( setUser(v) )
+    dispatch( push('/users-remove/'+v._id) )
   }
 
   handleRestore(v){
