@@ -11,7 +11,7 @@ class FormUser extends React.Component {
         name: '',
         lastName: '',
         phone: '',
-        state: '',
+        state: 'active',
         msgs: ''
       };
     }

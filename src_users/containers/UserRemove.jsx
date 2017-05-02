@@ -30,7 +30,7 @@ class UserEditNew extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.isWorking == false){
+    if( nextProps.isDone ){ //finish updating, create
       this.props.dispatch(push('/users/'));
     }
   }

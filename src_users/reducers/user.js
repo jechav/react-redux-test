@@ -8,23 +8,28 @@ import {
 
 } from '../actions/user';
 
+const initialState = {
+  isWorking: false,
+  isDone: false,
+}
 // users reducer
-export default function user(state = [], action) {
+export default function user(state = initialState, action) {
   switch (action.type) {
     case USERS_CREATE_UPDATE_REQUESTED:
       return {
         isWorking: true,
+        isDone: false,
         data: action.data
       }
     case USERS_CREATE_UPDATE_SUCCEEDED:
       return {
         isWorking: false,
-        done: true,
+        isDone: true,
       }
     case USERS_CREATE_UPDATE_FAILED:
       return {
         isWorking: false,
-        done: false,
+        isDone: false,
         message: action.message
       }
 

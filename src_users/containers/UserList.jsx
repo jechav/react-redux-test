@@ -15,10 +15,11 @@ class UsersList extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.handleRestore = this.handleRestore.bind(this);
-
   }
+
   componentDidMount(){
     const { dispatch } = this.props
+    dispatch( setUser() )
     dispatch( fetchUsers() );
   }
 
@@ -46,8 +47,14 @@ class UsersList extends React.Component {
       this.props.dispatch( createUpdateUser(data) )
     }
   }
-  //componentWillReceiveProps(nextProps){
-  //}
+
+  componentWillReceiveProps(nextProps) { 
+    const { isDone, dispatch } = nextProps;
+    if( isDone ){ // update user complete, update list
+      dispatch( setUser() )
+      dispatch( fetchUsers() );
+    }
+  }
 
   render(){
     const { items, isFetching, message } = this.props;
@@ -73,7 +80,8 @@ const mapStateToProps = state =>  {
   return {
     ...users,
     message: user.message,
-    done: user.done
+    isWorking: user.isWorking,
+    isDone: user.isDone
   }
 };
 
