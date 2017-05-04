@@ -12,6 +12,7 @@ class UserEditNew extends React.Component {
     this.handleCancelForm = this.handleCancelForm.bind(this);
     this.handleCreateUser = this.handleCreateUser.bind(this);
   }
+
   componentDidMount(){
     const { routeParams, data } = this.props;
     if(routeParams._id){

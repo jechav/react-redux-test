@@ -5,103 +5,51 @@ import users from "../../src_users/reducers/users";
 // mocha - http://mochajs.org/#getting-started
 // assert - https://nodejs.org/api/assert.html#assert_assert_deepequal_actual_expected_message
 describe('Users reducer', () => {
-  describe('USERS_LIST_SAVE', () => {
-    it('should return a list of users', () => {
+  describe('USERS_FETCH_REQUESTED', () => {
+    it('should begin the request', () => {
       assert.deepEqual(
         users({}, {
-          type: 'USERS_LIST_SAVE',
-          users: [{
-            id: 1,
-            username: 'Some name',
-            job: 'Some job',
-          }],
-        }), [{
-          id: 1,
-          username: 'Some name',
-          job: 'Some job',
-        }]
+          type: 'USERS_FETCH_REQUESTED',
+        }),
+        { isFetching: true }
       );
     });
   });
 
-  describe('USERS_ADD_SAVE', () => {
-    it('should return a new user array element', () => {
+  describe('USERS_FETCH_COMPLETED', () => {
+    it('should show users list', () => {
       assert.deepEqual(
-        users([{
-          id: 1,
-          username: 'Some name',
-          job: 'Some job',
-        }], {
-          type: 'USERS_ADD_SAVE',
-          user: {
-            id: 2,
-            username: 'Other name',
-            job: 'Other job',
-          },
-        }), [{
-          id: 1,
-          username: 'Some name',
-          job: 'Some job',
-        }, {
-          id: 2,
-          username: 'Other name',
-          job: 'Other job',
-        }]
+        users({}, {
+          type: 'USERS_FETCH_COMPLETED',
+          data: [{
+            name: 'juan',
+            lastName: 'Garcia',
+          }]
+        }) ,
+        {
+          isFetching: false,
+          items: [{
+            name: 'juan',
+            lastName: 'Garcia',
+          }]
+        }
       );
     });
   });
 
-  describe('USERS_EDIT_SAVE', () => {
-    it('should return an edited user array element', () => {
+  describe('USERS_FETCH_FAILED', () => {
+    it('should throw error', () => {
       assert.deepEqual(
-        users([{
-          id: 1,
-          username: 'Some name',
-          job: 'Some job',
-        }, {
-          id: 2,
-          username: 'Other name',
-          job: 'Other job',
-        }], {
-          type: 'USERS_EDIT_SAVE',
-          user: {
-            id: 2,
-            username: 'Changed name',
-            job: 'Changed job',
-          },
-        }), [{
-          id: 1,
-          username: 'Some name',
-          job: 'Some job',
-        }, {
-          id: 2,
-          username: 'Changed name',
-          job: 'Changed job',
-        }]
+      users({}, {
+        type: 'USERS_FETCH_FAILED',
+        message: '500 internal error'
+      }) ,
+        {
+          isFetching: false,
+          message: '500 internal error'
+        }
       );
     });
   });
 
-  describe('USERS_DELETE_SAVE', () => {
-    it('should return the user array without the deleted element', () => {
-      assert.deepEqual(
-        users([{
-          id: 1,
-          username: 'Some name',
-          job: 'Some job',
-        }, {
-          id: 2,
-          username: 'Other name',
-          job: 'Other job',
-        }], {
-          type: 'USERS_DELETE_SAVE',
-          user_id: 2,
-        }), [{
-          id: 1,
-          username: 'Some name',
-          job: 'Some job',
-        }]
-      );
-    });
-  });
 });

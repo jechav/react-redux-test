@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 
-
 class FormUser extends React.Component {
   constructor(props) {
     super(props);

@@ -1,7 +1,7 @@
 
 import {
   USERS_FETCH_REQUESTED,
-  USERS_FETCH_SUCCEEDED,
+  USERS_FETCH_COMPLETED,
   USERS_FETCH_FAILED,
 
 } from '../actions/users';
@@ -14,13 +14,13 @@ export default function users(state = [], action) {
         ...state,
         isFetching: true,
       }
-    case USERS_FETCH_SUCCEEDED:
+    case USERS_FETCH_COMPLETED:
       return {
         ...state,
         isFetching: false,
         items: action.data,
       }
-    case USERS_FETCH_SUCCEEDED:
+    case USERS_FETCH_FAILED:
       return {
         ...state,
         isFetching: false,

@@ -4,15 +4,15 @@ import Api from '../api/users.js'
 
 import {
   USERS_FETCH_REQUESTED,
-  USERS_FETCH_SUCCEEDED,
+  USERS_FETCH_COMPLETED,
   USERS_FETCH_FAILED
 } from '../actions/users';
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* fetchUsers(action) {
+export function* fetchUsers(action) {
   try {
     const data = yield call(Api.getList);
-    yield put({type: USERS_FETCH_SUCCEEDED, data});
+    yield put({type: USERS_FETCH_COMPLETED, data});
   } catch (e) {
     yield put({type: USERS_FETCH_FAILED, message: e.message});
   }
